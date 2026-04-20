@@ -1,24 +1,18 @@
-class TaxCalculator{
-    
-    constructor(){
-        this.#rate = 15;
-        this.state = 'TX';
-        this.exempt = false;
-    }
-    
-    calculate(){
-        if(this.exempt){
-            return this.#calculateExempt(1.37);
-        }else{
-            return this.#calculateNonExempt(5.72);
-        }
-    }
+class Rectangle {
+  #width;
+  #height;
 
-    #calculateExempt(amount) {
-        return amount;
-    }
+  constructor(width, height) {
+    this.#width = width;
+    this.#height = height;
+  }
 
-    #calculateNonExempt(amount) {
-        return amount * this.#rate / 100;
-    }
+  calculateArea() {
+    return this.#width * this.#height;
+  }
 }
+
+const width = 10;
+const height = 5;
+const rectangle = new Rectangle(width, height);
+const area = rectangle.calculateArea();
