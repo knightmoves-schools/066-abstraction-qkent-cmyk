@@ -1,18 +1,19 @@
-class Rectangle {
-  #width;
-  #height;
+class TaxCalculator {
+  #rate = 0.1; // 10% tax rate
 
-  constructor(width, height) {
-    this.#width = width;
-    this.#height = height;
+  #calculateExempt() {
+    return 10000; // exempt amount
   }
 
-  calculateArea() {
-    return this.#width * this.#height;
+  #calculateNonExempt(income) {
+    return Math.max(0, income - this.#calculateExempt());
+  }
+
+  calculate(income = 15000) {
+    return this.#calculateNonExempt(income) * this.#rate;
   }
 }
 
-const width = 10;
-const height = 5;
-const rectangle = new Rectangle(width, height);
-const area = rectangle.calculateArea();
+// Example usage
+const calculator = new TaxCalculator();
+const tax = calculator.calculate();
